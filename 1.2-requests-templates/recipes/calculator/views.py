@@ -28,3 +28,16 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+def calculator(request):
+    dish = request.Get.get("dish")
+    num = int(request.Get.get("servings", 1))
+    for ingredient, amount in DATA[dish].items():
+        if isinstance(amount, int):
+            recipe[dish].update({ingredient: int(amount*num)})
+        else:
+            recipe[dish].update({ingredirnt: round(amount*num, 3)})
+    context = {
+        'recipe': recipe
+        }
+    return render(request, 'calculator/index.html', context)
