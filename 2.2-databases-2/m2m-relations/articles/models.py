@@ -14,3 +14,14 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+class Tag(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100, primary_key=True)
+
+    def __str__(self):
+        return self.name
+
+class ArticleTags(models.Model):
+    tag = models.ForeignKey(Tag, on_deleted=models.CASCADE)
+    Article = models.ForeignKey(Article, on_deleted=models.CASCADE, related_name="tags")
