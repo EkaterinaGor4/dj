@@ -26,5 +26,5 @@ class Student(models.Model):
         return self.name
 
 class StudentPosition(models.Model):
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='positions')
-    student = models.ForeignKey(Student, on_deleted=models.CASCADE, related_name='positions')
+    teachers = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='positions')
+    students = models.ForeignKey(Student, on_deleted=models.CASCADE, related_name='positions')
