@@ -22,4 +22,10 @@ class ArticleTagInlineFormSet(BaseInlineFormSet):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'published_at']
+    list_filter = ['title']
     inlines = [ArticleTagInLines]
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
